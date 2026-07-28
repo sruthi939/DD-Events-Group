@@ -1,7 +1,7 @@
 import React from 'react';
 import { useBooking } from '../hooks/useBooking';
 import { ProtectedRoute } from '../components/ProtectedRoute';
-import { Calendar, MapPin, Users, FileText, CheckCircle2, Clock, XCircle, Download, ArrowRight } from 'lucide-react';
+import { Calendar, CheckCircle2, Clock, XCircle, Download } from 'lucide-react';
 
 interface MyBookingProps {
   onOpenNewBooking?: () => void;

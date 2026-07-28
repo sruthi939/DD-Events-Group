@@ -1,6 +1,6 @@
 import React from 'react';
 import { EventItem } from '../types';
-import { Calendar, MapPin, ArrowRight, Sparkles, Clock } from 'lucide-react';
+import { Calendar, MapPin, ArrowRight, Clock } from 'lucide-react';
 
 interface UpcomingEventsProps {
   events: EventItem[];

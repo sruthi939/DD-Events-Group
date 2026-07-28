@@ -1,6 +1,5 @@
 import React from 'react';
-import { Award, Users, ShieldCheck, Sparkles, Star, Calendar, Heart, Globe } from 'lucide-react';
-import { logo } from '../assets/assets';
+import { ShieldCheck, Sparkles, Heart, Globe } from 'lucide-react';
 
 export const About: React.FC = () => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { EventItem } from '../types';
 import { useBooking } from '../hooks/useBooking';
-import { Calendar, MapPin, Users, Star, ArrowLeft, CheckCircle2, ShieldCheck, DollarSign } from 'lucide-react';
+import { Calendar, MapPin, Users, Star, ArrowLeft, CheckCircle2, ShieldCheck } from 'lucide-react';
 
 interface EventDetailsProps {
   event: EventItem | null;

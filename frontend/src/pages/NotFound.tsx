@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, ArrowLeft, Home as HomeIcon } from 'lucide-react';
+import { Sparkles, Home as HomeIcon } from 'lucide-react';
 
 interface NotFoundProps {
   onBackToHome?: () => void;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BookingForm } from '../components/BookingForm';
-import { Sparkles, ShieldCheck } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 interface BookEventProps {
   initialService?: string;
