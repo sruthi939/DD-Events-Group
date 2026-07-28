@@ -1,60 +1,133 @@
-import { useState } from 'react';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { Services } from './components/Services';
-import { EventGallery } from './components/EventGallery';
-import { Testimonial } from './components/Testimonial';
-import { BookingModal } from './components/BookingModal';
+import React, { useState } from 'react';
+import { AuthProvider } from './context/AuthContext';
+import { EventProvider } from './context/EventContext';
+import { BookingProvider } from './context/BookingContext';
+import { MainLayout } from './layout/MainLayout';
+import { Home } from './pages/Home';
+import { About } from './pages/About';
+import { Events } from './pages/Events';
+import { EventDetails } from './pages/EventDetails';
+import { Contact } from './pages/Contact';
 import { Login } from './pages/Login';
-import { Footer } from './components/Footer';
+import { Register } from './pages/Register';
+import { ForgotPassword } from './pages/ForgotPassword';
+import { RestPassword } from './pages/RestPassword';
+import { VerifyOTP } from './pages/VerifyOTP';
+import { MyBooking } from './pages/MyBooking';
+import { Profile } from './pages/Profile';
+import { EventItem } from './types';
 
-export function App() {
-  const [currentView, setCurrentView] = useState<'home' | 'login'>('home');
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState('');
+export type ViewType =
+  | 'home'
+  | 'about'
+  | 'events'
+  | 'event-detail'
+  | 'contact'
+  | 'login'
+  | 'register'
+  | 'forgot-password'
+  | 'reset-password'
+  | 'verify-otp'
+  | 'my-bookings'
+  | 'profile';
 
-  const handleOpenBooking = (serviceName?: string) => {
-    if (serviceName) {
-      setSelectedService(serviceName);
-    }
-    setIsBookingOpen(true);
+export function AppContent() {
+  const [currentView, setCurrentView] = useState<ViewType>('home');
+  const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null);
+
+  const handleSelectEventDetail = (event: EventItem) => {
+    setSelectedEvent(event);
+    setCurrentView('event-detail');
   };
 
-  const handleCloseBooking = () => {
-    setIsBookingOpen(false);
-    setSelectedService('');
-  };
-
+  // Full screen auth pages
   if (currentView === 'login') {
-    return <Login onBackToHome={() => setCurrentView('home')} />;
+    return (
+      <Login
+        onBackToHome={() => setCurrentView('home')}
+        onNavigateToRegister={() => setCurrentView('register')}
+        onNavigateToForgotPassword={() => setCurrentView('forgot-password')}
+      />
+    );
+  }
+
+  if (currentView === 'register') {
+    return (
+      <Register
+        onBackToHome={() => setCurrentView('home')}
+        onNavigateToLogin={() => setCurrentView('login')}
+        onNavigateToVerifyOTP={() => setCurrentView('verify-otp')}
+      />
+    );
+  }
+
+  if (currentView === 'forgot-password') {
+    return (
+      <ForgotPassword
+        onBackToHome={() => setCurrentView('home')}
+        onNavigateToResetPassword={() => setCurrentView('reset-password')}
+      />
+    );
+  }
+
+  if (currentView === 'reset-password') {
+    return (
+      <RestPassword
+        onBackToHome={() => setCurrentView('home')}
+        onNavigateToLogin={() => setCurrentView('login')}
+      />
+    );
+  }
+
+  if (currentView === 'verify-otp') {
+    return (
+      <VerifyOTP
+        onBackToHome={() => setCurrentView('home')}
+        onSuccessNavigate={() => setCurrentView('home')}
+      />
+    );
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-brand-500 selection:text-white">
-      {/* Sticky Navigation Header */}
-      <Navbar
-        onOpenBooking={() => handleOpenBooking()}
-        onOpenLogin={() => setCurrentView('login')}
-      />
+    <MainLayout onOpenLogin={() => setCurrentView('login')}>
+      {currentView === 'home' && (
+        <Home
+          onNavigateToEvents={() => setCurrentView('events')}
+          onSelectEventDetail={handleSelectEventDetail}
+        />
+      )}
 
-      {/* Main Content Sections */}
-      <main>
-        <Hero onOpenBooking={() => handleOpenBooking()} />
-        <Services onSelectService={(service) => handleOpenBooking(service)} />
-        <EventGallery />
-        <Testimonial />
-      </main>
+      {currentView === 'about' && <About />}
 
-      {/* Footer */}
-      <Footer />
+      {currentView === 'events' && (
+        <Events onSelectEventDetail={handleSelectEventDetail} />
+      )}
 
-      {/* Interactive Booking & Consultation Modal */}
-      <BookingModal
-        isOpen={isBookingOpen}
-        onClose={handleCloseBooking}
-        initialService={selectedService}
-      />
-    </div>
+      {currentView === 'event-detail' && (
+        <EventDetails
+          event={selectedEvent}
+          onBack={() => setCurrentView('events')}
+        />
+      )}
+
+      {currentView === 'contact' && <Contact />}
+
+      {currentView === 'my-bookings' && <MyBooking />}
+
+      {currentView === 'profile' && <Profile />}
+    </MainLayout>
+  );
+}
+
+export function App() {
+  return (
+    <AuthProvider>
+      <EventProvider>
+        <BookingProvider>
+          <AppContent />
+        </BookingProvider>
+      </EventProvider>
+    </AuthProvider>
   );
 }
 
