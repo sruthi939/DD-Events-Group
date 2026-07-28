@@ -3,9 +3,15 @@ import { Mail, Lock, User, Sparkles, ArrowRight, ArrowLeft } from 'lucide-react'
 
 interface LoginProps {
     onBackToHome?: () => void;
+    onNavigateToRegister?: () => void;
+    onNavigateToForgotPassword?: () => void;
 }
 
-export const Login: React.FC<LoginProps> = ({ onBackToHome }) => {
+export const Login: React.FC<LoginProps> = ({
+    onBackToHome,
+    onNavigateToRegister,
+    onNavigateToForgotPassword,
+}) => {
     const [isActive, setIsActive] = useState(false);
 
     // Form states
@@ -235,9 +241,13 @@ export const Login: React.FC<LoginProps> = ({ onBackToHome }) => {
                             </div>
 
                             <div className="text-right">
-                                <a href="#" className="text-xs text-rose-400 hover:underline">
+                                <button
+                                    type="button"
+                                    onClick={onNavigateToForgotPassword}
+                                    className="text-xs text-rose-400 hover:underline bg-transparent border-none p-0 cursor-pointer"
+                                >
                                     Forgot Password?
-                                </a>
+                                </button>
                             </div>
 
                             <button
@@ -292,7 +302,13 @@ export const Login: React.FC<LoginProps> = ({ onBackToHome }) => {
                             </p>
                             <button
                                 type="button"
-                                onClick={() => setIsActive(true)}
+                                onClick={() => {
+                                    if (onNavigateToRegister) {
+                                        onNavigateToRegister();
+                                    } else {
+                                        setIsActive(true);
+                                    }
+                                }}
                                 className="px-8 py-2.5 border-2 border-white rounded-xl font-semibold text-xs uppercase tracking-wider text-white hover:bg-white hover:text-rose-600 transition-all shadow-lg flex items-center gap-2 group"
                             >
                                 <span>Sign Up</span>
@@ -318,7 +334,13 @@ export const Login: React.FC<LoginProps> = ({ onBackToHome }) => {
                         <p className="text-xs text-slate-300">
                             Don't have an account?{' '}
                             <button
-                                onClick={() => setIsActive(true)}
+                                onClick={() => {
+                                    if (onNavigateToRegister) {
+                                        onNavigateToRegister();
+                                    } else {
+                                        setIsActive(true);
+                                    }
+                                }}
                                 className="text-rose-400 font-bold hover:underline"
                             >
                                 Sign Up

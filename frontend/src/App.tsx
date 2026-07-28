@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { AuthProvider } from './context/AuthContext';
 import { EventProvider } from './context/EventContext';
 import { BookingProvider } from './context/BookingContext';
