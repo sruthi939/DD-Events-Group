@@ -19,6 +19,23 @@ export interface EventGalleryItem {
   description: string;
 }
 
+export interface EventItem {
+  id: string;
+  title: string;
+  category: string;
+  date: string;
+  time?: string;
+  location: string;
+  price: number;
+  guestCount: number;
+  imageUrl: string;
+  description: string;
+  rating: number;
+  isPopular?: boolean;
+  isUpcoming?: boolean;
+  features?: string[];
+}
+
 export interface Testimonial {
   id: string;
   clientName: string;
@@ -38,4 +55,45 @@ export interface BookingFormData {
   guestCount: string;
   budgetRange: string;
   notes: string;
+}
+
+export interface Booking {
+  id: string;
+  bookingNumber: string;
+  userName: string;
+  userEmail: string;
+  userPhone: string;
+  eventType: string;
+  eventDate: string;
+  location: string;
+  guestCount: number;
+  budget: string;
+  status: 'Pending' | 'Confirmed' | 'Completed' | 'Cancelled';
+  createdAt: string;
+  totalAmount?: number;
+  depositPaid?: number;
+  notes?: string;
+}
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  avatar?: string;
+  role?: 'user' | 'admin';
+  createdAt?: string;
+}
+
+export interface AuthState {
+  user: User | null;
+  token: string | null;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+}
+
+export interface FilterOptions {
+  category: string;
+  searchQuery: string;
+  sortBy: 'popular' | 'date' | 'price-low' | 'price-high';
 }
