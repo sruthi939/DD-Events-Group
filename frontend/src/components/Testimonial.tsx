@@ -1,8 +1,8 @@
 import React from 'react';
 import { Star, Quote, Sparkles } from 'lucide-react';
-import { Testimonial } from '../types';
+import { Testimonial as TestimonialType } from '../types';
 
-const TESTIMONIALS: Testimonial[] = [
+const TESTIMONIALS: TestimonialType[] = [
   {
     id: 't1',
     clientName: 'Sophia & Marcus Vance',
@@ -32,7 +32,7 @@ const TESTIMONIALS: Testimonial[] = [
   }
 ];
 
-export const Testimonials: React.FC = () => {
+export const Testimonial: React.FC = () => {
   return (
     <section id="testimonials" className="py-24 bg-slate-950 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -56,7 +56,7 @@ export const Testimonials: React.FC = () => {
               className="glass-card p-8 rounded-3xl border border-slate-800 flex flex-col justify-between relative group hover:border-brand-500/40 transition-all duration-300"
             >
               <Quote className="w-10 h-10 text-brand-500/20 absolute top-6 right-6" />
-              
+
               <div className="space-y-4">
                 {/* Rating stars */}
                 <div className="flex items-center gap-1">
@@ -88,3 +88,5 @@ export const Testimonials: React.FC = () => {
     </section>
   );
 };
+
+export default Testimonial;

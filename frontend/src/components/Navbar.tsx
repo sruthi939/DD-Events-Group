@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Menu, X, Sparkles, PhoneCall } from 'lucide-react';
+import { Calendar, Menu, X, PhoneCall, User } from 'lucide-react';
+import { logo } from '../assets/assets';
 
 interface NavbarProps {
   onOpenBooking: () => void;
+  onOpenLogin: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking, onOpenLogin }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -18,18 +20,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80 py-3 shadow-lg shadow-rose-950/10' 
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? 'bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80 py-3 shadow-lg shadow-rose-950/10'
         : 'bg-transparent py-5'
-    }`}>
+      }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-rose-500 to-amber-400 flex items-center justify-center shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform">
-              <Sparkles className="w-5 h-5 text-white" />
-            </div>
+            <img
+              src={logo}
+              alt="DD Events Group Logo"
+              className="w-10 h-10 object-cover rounded-xl shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform"
+            />
             <div className="flex flex-col">
               <span className="font-serif text-xl font-bold tracking-tight text-white flex items-center gap-1.5">
                 DD <span className="text-gradient-rose">Events</span> Group
@@ -60,6 +63,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
               <PhoneCall className="w-3.5 h-3.5 text-brand-500" />
               <span>(800) 555-EVENTS</span>
             </a>
+
+            <button
+              onClick={onOpenLogin}
+              className="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-200 glass-card rounded-xl hover:text-white hover:border-brand-500/50 transition-all"
+            >
+              <User className="w-3.5 h-3.5 text-rose-400" />
+              <span>Sign In</span>
+            </button>
+
             <button
               onClick={onOpenBooking}
               className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-white rounded-xl group bg-gradient-to-br from-brand-500 via-rose-500 to-amber-500 group-hover:from-brand-500 group-hover:to-amber-500 hover:shadow-lg hover:shadow-brand-500/30 transition-all duration-300"
@@ -119,6 +131,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
+                onOpenLogin();
+              }}
+              className="w-full py-2.5 glass-card text-slate-200 rounded-xl font-semibold flex items-center justify-center gap-2"
+            >
+              <User className="w-4 h-4 text-rose-400" />
+              <span>Sign In / Register</span>
+            </button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
                 onOpenBooking();
               }}
               className="w-full py-3 bg-gradient-to-r from-brand-600 to-rose-600 text-white rounded-xl font-semibold flex items-center justify-center gap-2 shadow-lg shadow-brand-600/30"
@@ -132,3 +154,5 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
     </nav>
   );
 };
+
+export default Navbar;

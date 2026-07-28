@@ -157,3 +157,6 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
     </section>
   );
 };
+
+export default Services;
+

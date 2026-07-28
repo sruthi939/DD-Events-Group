@@ -190,3 +190,6 @@ export const EventGallery: React.FC = () => {
     </section>
   );
 };
+
+export default EventGallery;
+

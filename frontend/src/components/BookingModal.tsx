@@ -227,3 +227,6 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
     </div>
   );
 };
+
+export default BookingModal;
+

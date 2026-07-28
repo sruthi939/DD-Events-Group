@@ -100,3 +100,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
     </section>
   );
 };
+
+export default Hero;
+

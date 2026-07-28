@@ -1,5 +1,6 @@
 import React from 'react';
-import { Sparkles, Mail, Phone, MapPin, Instagram, Facebook, Linkedin, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, ArrowRight } from 'lucide-react';
+import { logo } from '../assets/assets';
 
 export const Footer: React.FC = () => {
   return (
@@ -9,9 +10,11 @@ export const Footer: React.FC = () => {
           {/* Brand Info */}
           <div className="space-y-4 md:col-span-1">
             <a href="#" className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 via-rose-500 to-amber-400 flex items-center justify-center shadow-md">
-                <Sparkles className="w-5 h-5 text-white" />
-              </div>
+              <img
+                src={logo}
+                alt="DD Events Group Logo"
+                className="w-9 h-9 object-cover rounded-xl shadow-md"
+              />
               <span className="font-serif text-lg font-bold text-white">
                 DD <span className="text-gradient-rose">Events</span> Group
               </span>
@@ -97,3 +100,6 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
+
+export default Footer;
+
