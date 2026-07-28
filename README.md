@@ -1,7 +1,7 @@
 # DD-Events-Group
 Making every celebration special! We plan, organize, and manage events with care, creativity, and attention to detail so you can enjoy every moment.
-components/
 
+## Features
 - 🌟 **Luxury Brand Hero Section**: Gradient typography, key trust stats, and CTA.
 - 💍 **Event Services Showcase**: Interactive cards detailing Weddings, Corporate Galas, Milestone Birthdays, and Private Soirées.
 - 📸 **Filterable Event Gallery**: Categorized portfolio showcase with lightbox detail views.
