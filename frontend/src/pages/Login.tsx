@@ -18,7 +18,9 @@ export const Login: React.FC<LoginProps> = ({
     const [signInEmail, setSignInEmail] = useState('');
     const [signInPassword, setSignInPassword] = useState('');
 
+    const [signUpName, setSignUpName] = useState('');
     const [signUpEmail, setSignUpEmail] = useState('');
+    const [signUpPassword, setSignUpPassword] = useState('');
 
     const handleSignInSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -27,7 +29,7 @@ export const Login: React.FC<LoginProps> = ({
 
     const handleSignUpSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        alert(`Creating account for ${signUpEmail}`);
+        alert(`Creating account for ${signUpName} (${signUpEmail})`);
     };
 
     return (
