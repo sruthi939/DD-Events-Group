@@ -3,9 +3,15 @@ import { Mail, Lock, User, Sparkles, ArrowRight, ArrowLeft } from 'lucide-react'
 
 interface LoginProps {
     onBackToHome?: () => void;
+    onNavigateToRegister?: () => void;
+    onNavigateToForgotPassword?: () => void;
 }
 
-export const Login: React.FC<LoginProps> = ({ onBackToHome }) => {
+export const Login: React.FC<LoginProps> = ({
+    onBackToHome,
+    onNavigateToRegister,
+    onNavigateToForgotPassword,
+}) => {
     const [isActive, setIsActive] = useState(false);
 
     // Form states
@@ -50,8 +56,8 @@ export const Login: React.FC<LoginProps> = ({ onBackToHome }) => {
                 {/* Sign Up Form Container */}
                 <div
                     className={`absolute top-0 left-0 h-full w-full sm:w-1/2 transition-all duration-700 ease-in-out ${isActive
-                            ? 'sm:translate-x-full opacity-100 z-10 animate-fade-in'
-                            : 'opacity-0 z-0 pointer-events-none'
+                        ? 'sm:translate-x-full opacity-100 z-10 animate-fade-in'
+                        : 'opacity-0 z-0 pointer-events-none'
                         }`}
                 >
                     <form
@@ -154,8 +160,8 @@ export const Login: React.FC<LoginProps> = ({ onBackToHome }) => {
                 {/* Sign In Form Container */}
                 <div
                     className={`absolute top-0 left-0 h-full w-full sm:w-1/2 transition-all duration-700 ease-in-out ${isActive
-                            ? 'sm:translate-x-full opacity-0 z-0 pointer-events-none'
-                            : 'opacity-100 z-10'
+                        ? 'sm:translate-x-full opacity-0 z-0 pointer-events-none'
+                        : 'opacity-100 z-10'
                         }`}
                 >
                     <form
@@ -235,7 +241,14 @@ export const Login: React.FC<LoginProps> = ({ onBackToHome }) => {
                             </div>
 
                             <div className="text-right">
-                                <a href="#" className="text-xs text-rose-400 hover:underline">
+                                <a
+                                    href="#"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        onNavigateToForgotPassword?.();
+                                    }}
+                                    className="text-xs text-rose-400 hover:underline"
+                                >
                                     Forgot Password?
                                 </a>
                             </div>
@@ -253,8 +266,8 @@ export const Login: React.FC<LoginProps> = ({ onBackToHome }) => {
                 {/* Sliding Toggle Panel Container */}
                 <div
                     className={`hidden sm:block absolute top-0 left-1/2 w-1/2 h-full overflow-hidden transition-all duration-700 ease-in-out z-30 ${isActive
-                            ? '-translate-x-full rounded-r-[150px] rounded-l-none'
-                            : 'rounded-l-[150px] rounded-r-none'
+                        ? '-translate-x-full rounded-r-[150px] rounded-l-none'
+                        : 'rounded-l-[150px] rounded-r-none'
                         }`}
                 >
                     {/* Sliding Gradient Overlay */}
@@ -331,4 +344,4 @@ export const Login: React.FC<LoginProps> = ({ onBackToHome }) => {
     );
 };
 
-export default Login;
+export default Login;

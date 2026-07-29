@@ -1,73 +1,28 @@
 # DD-Events-Group
 Making every celebration special! We plan, organize, and manage events with care, creativity, and attention to detail so you can enjoy every moment.
-components/
-│   │   ├── Navbar.jsx
-│   │   ├── Footer.jsx
-│   │   ├── Hero.jsx
-│   │   ├── EventCard.jsx
-│   │   ├── EventList.jsx
-│   │   ├── SearchBar.jsx
-│   │   ├── CategoryFilter.jsx
-│   │   ├── BookingForm.jsx
-│   │   ├── Payment.jsx
-│   │   ├── Loader.jsx
-│   │   ├── Modal.jsx
-│   │   ├── Button.jsx
-│   │   ├── Input.jsx
-│   │   ├── OTPInput.jsx
-│   │   ├── ProtectedRoute.jsx
-│   │   ├── EventBanner.jsx
-│   │   ├── UpcomingEvents.jsx
-│   │   ├── PopularEvents.jsx
-│   │   ├── Testimonials.jsx
-│   │   ├── Newsletter.jsx
-│   │   └── ScrollToTop.jsx
-│   │
-│   ├── pages/
-│   │   ├── Home.jsx
-│   │   ├── Events.jsx
-│   │   ├── EventDetails.jsx
-│   │   ├── BookEvent.jsx
-│   │   ├── MyBookings.jsx
-│   │   ├── Profile.jsx
-│   │   ├── Login.jsx
-│   │   ├── Register.jsx
-│   │   ├── ForgotPassword.jsx
-│   │   ├── VerifyOTP.jsx
-│   │   ├── ResetPassword.jsx
-│   │   ├── About.jsx
-│   │   ├── Contact.jsx
-│   │   └── NotFound.jsx
-│   │
-│   ├── layouts/
-│   │   ├── MainLayout.jsx
-│   │   └── AuthLayout.jsx
-│   │
-│   ├── context/
-│   │   ├── AuthContext.jsx
-│   │   ├── EventContext.jsx
-│   │   └── BookingContext.jsx
-│   │
-│   ├── hooks/
-│   │   ├── useAuth.js
-│   │   ├── useEvent.js
-│   │   ├── useBooking.js
-│   │   └── useDebounce.js
-│   │
-│   ├── services/
-│   │   ├── axios.js
-│   │   ├── authService.js
-│   │   ├── eventService.js
-│   │   ├── bookingService.js
-│   │   ├── paymentService.js
-│   │   └── profileService.js
-│   │
-│   ├── routes/
-│   │   └── AppRoutes.jsx
-│   │
-│   ├── utils/
-│   │   ├── constants.js
-│   │   ├── helpers.js
-│   │   ├── validation.js
-│   │   ├── formatDate.js
-│   │   └── storage.js
+
+## Features
+- 🌟 **Luxury Brand Hero Section**: Gradient typography, key trust stats, and CTA.
+- 💍 **Event Services Showcase**: Interactive cards detailing Weddings, Corporate Galas, Milestone Birthdays, and Private Soirées.
+- 📸 **Filterable Event Gallery**: Categorized portfolio showcase with lightbox detail views.
+- ⭐ **Client Praise & Reviews**: Verified testimonials from past event hosts.
+- 📅 **Interactive Booking Modal**: Live consultation request form with custom date, guest count, and budget range selection.
+- 🎨 **Modern Design System**: Built with dark mode aesthetics, glassmorphism card effects, and custom gradient accents.
+
+## Getting Started
+
+### 1. Install Dependencies
+```bash
+cd frontend
+npm install
+```
+
+### 2. Run Development Server
+```bash
+npm run dev
+```
+
+### 3. Build for Production
+```bash
+npm run build
+```
