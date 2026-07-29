@@ -18,9 +18,7 @@ export const Login: React.FC<LoginProps> = ({
     const [signInEmail, setSignInEmail] = useState('');
     const [signInPassword, setSignInPassword] = useState('');
 
-    const [signUpName, setSignUpName] = useState('');
     const [signUpEmail, setSignUpEmail] = useState('');
-    const [signUpPassword, setSignUpPassword] = useState('');
 
     const handleSignInSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -29,7 +27,7 @@ export const Login: React.FC<LoginProps> = ({
 
     const handleSignUpSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        alert(`Creating account for ${signUpName} (${signUpEmail})`);
+        alert(`Creating account for ${signUpEmail}`);
     };
 
     return (
@@ -305,10 +303,7 @@ export const Login: React.FC<LoginProps> = ({
                             </p>
                             <button
                                 type="button"
-                                onClick={() => {
-                                    setIsActive(true);
-                                    onNavigateToRegister?.();
-                                }}
+                                onClick={() => setIsActive(true)}
                                 className="px-8 py-2.5 border-2 border-white rounded-xl font-semibold text-xs uppercase tracking-wider text-white hover:bg-white hover:text-rose-600 transition-all shadow-lg flex items-center gap-2 group"
                             >
                                 <span>Sign Up</span>
@@ -334,10 +329,7 @@ export const Login: React.FC<LoginProps> = ({
                         <p className="text-xs text-slate-300">
                             Don't have an account?{' '}
                             <button
-                                onClick={() => {
-                                    setIsActive(true);
-                                    onNavigateToRegister?.();
-                                }}
+                                onClick={() => setIsActive(true)}
                                 className="text-rose-400 font-bold hover:underline"
                             >
                                 Sign Up
