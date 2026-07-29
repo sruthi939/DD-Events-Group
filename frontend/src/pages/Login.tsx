@@ -56,8 +56,8 @@ export const Login: React.FC<LoginProps> = ({
                 {/* Sign Up Form Container */}
                 <div
                     className={`absolute top-0 left-0 h-full w-full sm:w-1/2 transition-all duration-700 ease-in-out ${isActive
-                            ? 'sm:translate-x-full opacity-100 z-10 animate-fade-in'
-                            : 'opacity-0 z-0 pointer-events-none'
+                        ? 'sm:translate-x-full opacity-100 z-10 animate-fade-in'
+                        : 'opacity-0 z-0 pointer-events-none'
                         }`}
                 >
                     <form
@@ -160,8 +160,8 @@ export const Login: React.FC<LoginProps> = ({
                 {/* Sign In Form Container */}
                 <div
                     className={`absolute top-0 left-0 h-full w-full sm:w-1/2 transition-all duration-700 ease-in-out ${isActive
-                            ? 'sm:translate-x-full opacity-0 z-0 pointer-events-none'
-                            : 'opacity-100 z-10'
+                        ? 'sm:translate-x-full opacity-0 z-0 pointer-events-none'
+                        : 'opacity-100 z-10'
                         }`}
                 >
                     <form
@@ -241,13 +241,16 @@ export const Login: React.FC<LoginProps> = ({
                             </div>
 
                             <div className="text-right">
-                                <button
-                                    type="button"
-                                    onClick={onNavigateToForgotPassword}
-                                    className="text-xs text-rose-400 hover:underline bg-transparent border-none p-0 cursor-pointer"
+                                <a
+                                    href="#"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        onNavigateToForgotPassword?.();
+                                    }}
+                                    className="text-xs text-rose-400 hover:underline"
                                 >
                                     Forgot Password?
-                                </button>
+                                </a>
                             </div>
 
                             <button
@@ -263,8 +266,8 @@ export const Login: React.FC<LoginProps> = ({
                 {/* Sliding Toggle Panel Container */}
                 <div
                     className={`hidden sm:block absolute top-0 left-1/2 w-1/2 h-full overflow-hidden transition-all duration-700 ease-in-out z-30 ${isActive
-                            ? '-translate-x-full rounded-r-[150px] rounded-l-none'
-                            : 'rounded-l-[150px] rounded-r-none'
+                        ? '-translate-x-full rounded-r-[150px] rounded-l-none'
+                        : 'rounded-l-[150px] rounded-r-none'
                         }`}
                 >
                     {/* Sliding Gradient Overlay */}
@@ -303,11 +306,8 @@ export const Login: React.FC<LoginProps> = ({
                             <button
                                 type="button"
                                 onClick={() => {
-                                    if (onNavigateToRegister) {
-                                        onNavigateToRegister();
-                                    } else {
-                                        setIsActive(true);
-                                    }
+                                    setIsActive(true);
+                                    onNavigateToRegister?.();
                                 }}
                                 className="px-8 py-2.5 border-2 border-white rounded-xl font-semibold text-xs uppercase tracking-wider text-white hover:bg-white hover:text-rose-600 transition-all shadow-lg flex items-center gap-2 group"
                             >
@@ -335,11 +335,8 @@ export const Login: React.FC<LoginProps> = ({
                             Don't have an account?{' '}
                             <button
                                 onClick={() => {
-                                    if (onNavigateToRegister) {
-                                        onNavigateToRegister();
-                                    } else {
-                                        setIsActive(true);
-                                    }
+                                    setIsActive(true);
+                                    onNavigateToRegister?.();
                                 }}
                                 className="text-rose-400 font-bold hover:underline"
                             >
@@ -353,4 +350,4 @@ export const Login: React.FC<LoginProps> = ({
     );
 };
 
-export default Login;
+export default Login;
